@@ -18,7 +18,7 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings( value1, value2 ) {
+function concatenateStrings(value1, value2) {
   return value1.concat('', value2);
 }
 
@@ -66,7 +66,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  return value.slice(7,-1);
+  return value.slice(7, -1);
 }
 
 
@@ -127,7 +127,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-  return str.replace(value,'');
+  return str.replace(value, '');
 }
 
 /**
@@ -142,7 +142,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  return str.slice(1,-1);
+  return str.slice(1, -1);
 }
 
 
@@ -202,21 +202,21 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(width, height) {
-  let rect = "";
-  for (let i = 0; i < height; i++) {
-    for (let j = 0; j < width; j++) {
-      if (i === 0 && j === 0) rect += "┌";
-      else if (i === 0 && j === width - 1) rect += "┐";
-      else if (i === height - 1 && j === 0) rect += "└";
-      else if (i === height - 1 && j === width - 1) rect += "┘";
-      else if (i === 0 || i === height - 1) rect += "─";
-      else if (j === 0 || j === width - 1) rect += "│";
-      else rect += " ";
-    }
-    rect += "\n";
-  }
-  return rect;
+function getRectangleString(/* width, height */) {
+  // let rect = "";
+  // for (let i = 0; i < height; i++) {
+  //   for (let j = 0; j < width; j++) {
+  //     if (i === 0 && j === 0) rect += "┌";
+  //     else if (i === 0 && j === width - 1) rect += "┐";
+  //     else if (i === height - 1 && j === 0) rect += "└";
+  //     else if (i === height - 1 && j === width - 1) rect += "┘";
+  //     else if (i === 0 || i === height - 1) rect += "─";
+  //     else if (j === 0 || j === width - 1) rect += "│";
+  //     else rect += " ";
+  //   }
+  //   rect += "\n";
+  // }
+  // return rect;
 }
 
 
@@ -237,16 +237,15 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  return str.split("").map(function(char) {
-      let charCode = char.charCodeAt(0);
-      if (charCode < 65 || charCode > 90) {
-        return char;
-      } else if (charCode < 78) {
-        return String.fromCharCode(charCode + 13);
-      } else {
-        return String.fromCharCode(charCode - 13);
-      }
-    }).join("");
+  return str.split('').map((char) => {
+    const charCode = char.charCodeAt(0);
+    if (charCode < 65 || charCode > 90) {
+      return char;
+    } if (charCode < 78) {
+      return String.fromCharCode(charCode + 13);
+    }
+    return String.fromCharCode(charCode - 13);
+  }).join('');
 }
 
 /**
@@ -292,11 +291,11 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  const cards = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
-                 'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
-                 'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
-                 'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'];
-  return cards.indexOf(value)
+  const cards = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
+  return cards.indexOf(value);
 }
 
 
